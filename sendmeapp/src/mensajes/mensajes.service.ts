@@ -9,7 +9,7 @@ export class MensajesService {
 
     constructor(
         @InjectRepository(Mensaje)
-        private readonly mensajeRepository: Repository<Mensaje>,
+        private readonly mensajeRepository: Repository<Mensaje>, // Inject the repository in the service pointing out to the entity
       ) {}
 
       async getAll(): Promise<Mensaje[]> {
@@ -21,7 +21,7 @@ export class MensajesService {
         nuevo.mensaje = mensajeNuevo.mensaje;
         nuevo.nick = mensajeNuevo.nick;
 
-        return this.mensajeRepository.save(nuevo);
+        return await this.mensajeRepository.save(nuevo);
       }
 
       async updateMensaje(idMensaje: number, mensajeActualizar: CreateMensajeDto): Promise<Mensaje> {
@@ -29,7 +29,7 @@ export class MensajesService {
           mensajeUpdate.nick = mensajeActualizar.nick;
           mensajeUpdate.mensaje = mensajeActualizar.mensaje;
 
-          return await this.mensajeRepository.save(mensajeUpdate)
+          return await this.mensajeRepository.save(mensajeUpdate);
       }
 
       async deleteMensaje(idMensaje: number): Promise<any> {

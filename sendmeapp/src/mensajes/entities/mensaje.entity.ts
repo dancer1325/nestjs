@@ -1,8 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
 export class Mensaje {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn() // Primary key, generated automatically
     id: number;
 
     @Column()
@@ -10,4 +10,10 @@ export class Mensaje {
 
     @Column()
     mensaje: string;
+
+    // @Column('text') // Specify the specific data in the database, since string isn't a type in the database
+    // description: string;
+    //
+    // @Column('int') // Specify the specific data in the database, since string isn't a type in the database
+    // views: number;
 }
